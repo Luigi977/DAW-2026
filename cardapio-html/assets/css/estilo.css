@@ -1,5 +1,8 @@
 :root {
     --text: #1c1917;
+    --text-muted: #443d3d;
+    --background: #fafaf9;
+    --primary: #ea580c;
 }
 
 /***********
@@ -15,15 +18,26 @@ body {
     font-family: "Inter", sans-serif;
     min-height: 100vh;
     color: var(--text);
-    background-color: #FAFAF9;
+    background-color: var(--background);
 }
 
-
+.container {
+    width: min(100% - 2rem, 100rem);
+    margin-inline: auto;
+    padding: 0 1rem;
+}
 /***********
 * CABECHALHO
 ***********/
 header {
-    background-color: #ffffff;
+    background-color: var(--background);
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
 }
 
 header .brand {
@@ -46,12 +60,13 @@ header .brand h1 {
 header .brand p {
     margin-top: 2px;
     font-size: 0.8rem;
-    color: #78716c;
+    color: var(--text-muted);
 }
 
 header .cart-button {
-    display: flex;    
-    border: 1px solid #E7E5E4;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--text);
     width: 2.75rem;
     height: 2.75rem;
     align-items: center;
@@ -62,4 +77,68 @@ header .cart-button {
 header .cart-button img {
     width: 1.25rem;
     height: 1.25rem;
+}
+
+/***********
+* NAVEGAÇÃO
+***********/
+nav {
+    background-color: var(--background);
+    border-bottom: 1px solid var(--text-muted);
+}
+
+nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: .5rem;
+    padding-block: 1rem;
+}
+
+nav ul a {
+    display: block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--text);
+    border-radius: 100rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+nav ul a:not(.active):hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+nav ul a.active {
+    border-color: var(--primary);
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+/***********
+* MAIN  
+***********/
+
+/***********
+* FOOTER
+***********/
+footer {
+    background-color: var(--text-muted);
+    color: var(--background);
+    font-size: 0.875rem;
+    font-weight: 300;
+    margin-top: 2rem;
+    padding-block: 1.5rem;
+}
+
+footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
