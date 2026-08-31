@@ -132,6 +132,7 @@ main {
     width: min(100% - 2rem, 100rem);
     margin-inline: auto;
 }
+
 main > section {
     display: grid;
     gap: 1.25rem;
@@ -145,6 +146,22 @@ main > section header {
     align-items: center;
     justify-content: space-between;
     padding-block: 0.5rem;
+}
+
+@media (max-width: 1200px) {
+    main > section {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 750px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    main > section {
+        grid-template-columns: 1fr;
+    }
 }
 
 main > section header .header-info {
