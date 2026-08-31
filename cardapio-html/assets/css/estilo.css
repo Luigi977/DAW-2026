@@ -1,7 +1,7 @@
 :root {
     --text: #1c1917;
     --text-muted: #443d3d;
-    --background: #fafaf9;
+    --background: #f6f6f3;
     --primary: #ea580c;
 }
 
@@ -24,13 +24,12 @@ body {
 .container {
     width: min(100% - 2rem, 100rem);
     margin-inline: auto;
-    padding: 0 1rem;
 }
 /***********
 * CABECHALHO
 ***********/
-header {
-    background-color: var(--background);
+body > header {
+    background-color: #e9e4e4;
 }
 
 header .container {
@@ -83,7 +82,7 @@ header .cart-button img {
 * NAVEGAÇÃO
 ***********/
 nav {
-    background-color: var(--background);
+    background-color: #e9e4e4;
     border-bottom: 1px solid var(--text-muted);
 }
 
@@ -124,6 +123,123 @@ nav ul a.active {
 /***********
 * MAIN  
 ***********/
+
+main {
+    padding-block: 1.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 2rem;
+    width: min(100% - 2rem, 100rem);
+    margin-inline: auto;
+}
+main > section {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+}
+
+main > section header {
+    display: flex;
+    grid-column: 1 / -1;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.5rem;
+}
+
+main > section header .header-info {
+    text-align: right;
+}
+
+main > section header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+main > section header p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+main > section article {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    border: 1px solid var(--text);
+    box-shadow: 0 2px 8px rgba(36, 33, 31, 0.07);
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+section article figure {
+    position: relative;
+    grid-column: 1 / -1;
+    aspect-ratio: 16 / 10;
+}
+
+section article figure img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+section article figure figcaption {
+    background-color: var(--primary);
+    color: var(--background);
+    font-size: 0.6rem;
+    text-transform: lowercase;
+    padding-inline: 0.5rem;
+    padding-block: 0.2rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    overflow: hidden;
+}
+
+section article h3,
+section article p {
+    grid-column: 1 / -1;
+    padding-inline: 0.5rem;
+}
+
+section article h3 {
+    padding-top: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+}
+
+section article p:first-of-type {
+    padding-top: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1.3rem;
+    color: var(--text-muted);
+}
+
+section article p:last-of-type {
+    grid-column: auto;
+    padding-block: 1rem;
+    align-self: center;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+section article button {
+    grid-column: auto;
+    align-self: center;
+    margin-inline-end: 0.5rem;
+    background-color: var(--primary);
+    color: var(--background);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.6rem 1.25rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 100rem;
+}
+
 
 /***********
 * FOOTER
