@@ -19,6 +19,8 @@ body {
     min-height: 100vh;
     color: var(--text);
     background-color: var(--background);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
 }
 
 .container {
@@ -30,13 +32,18 @@ body {
 ***********/
 body > header {
     background-color: #e9e4e4;
+    border-bottom: 1px solid var(--text);
+    padding-block: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    
 }
 
 header .brand {
@@ -50,13 +57,14 @@ header .brand img {
 }
 
 header .brand h1 {
-    font-size: 1.75rem;
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
     font-weight: 700;
     line-height: 1.05;
     letter-spacing: -0.5px;
 }
 
 header .brand p {
+    display: none;
     margin-top: 2px;
     font-size: 0.8rem;
     color: var(--text-muted);
@@ -64,6 +72,7 @@ header .brand p {
 
 header .cart-button {
     display: flex;
+    flex: 0 0 auto;
     flex-direction: column;
     border: 1px solid var(--text);
     width: 2.75rem;
@@ -84,6 +93,12 @@ header .cart-button img {
 nav {
     background-color: #e9e4e4;
     border-bottom: 1px solid var(--text-muted);
+    padding-block: 0.5rem;
+    overflow: hidden;
+    position: sticky;
+    top: 5rem;
+    z-index: 100;
+
 }
 
 nav .container {
@@ -97,6 +112,12 @@ nav ul {
     list-style: none;
     gap: .5rem;
     padding-block: 1rem;
+    overflow: hidden;
+    overscroll-behavior-inline: contain;
+    scrollbar-width: thin;
+}
+nav ul li {
+    flex: 0 0 auto;
 }
 
 nav ul a {
@@ -127,7 +148,6 @@ nav ul a.active {
 main {
     padding-block: 1.5rem;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 330px;
     gap: 2rem;
     width: min(100% - 2rem, 100rem);
     margin-inline: auto;
@@ -136,7 +156,7 @@ main {
 main > section {
     display: grid;
     gap: 1.25rem;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     align-items: start;
 }
 
@@ -146,22 +166,6 @@ main > section header {
     align-items: center;
     justify-content: space-between;
     padding-block: 0.5rem;
-}
-
-@media (max-width: 1200px) {
-    main > section {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 750px) {
-    main {
-        grid-template-columns: 1fr;
-    }
-
-    main > section {
-        grid-template-columns: 1fr;
-    }
 }
 
 main > section header .header-info {
@@ -257,6 +261,38 @@ section article button {
     border-radius: 100rem;
 }
 
+/*************
+* SIDEBAR
+**************/ 
+
+main aside {
+    border: 1px solid var(--text);
+    box-shadow: 0 10px 26px rgba(36, 33, 31, 0.08);
+    border-radius: 0.8rem;
+    background-color: var(--background);
+    align-self: start;
+    order: -1;
+}
+main aside h2 {
+    font-size: 1.25rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--text);
+}
+main aside .cart-empty{
+    text-align: center;
+    padding-block: 2rem;
+}
+main aside .cart-empty p:first-of-type {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 0.6rem;
+}
+main aside .cart-empty p:last-of-type {
+    font-size: 0.75rem;
+    color: var(--text--muted);
+    margin-top: 0.25rem;
+}
 
 /***********
 * FOOTER
@@ -272,6 +308,53 @@ footer {
 
 footer .container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    flex-direction: column;
+}
+
+/***********
+* RESPONSIVITY
+***********/
+/*Mobile*/
+@media (min-width: 30rem) {
+    header .brand p {
+        display: block;
+    }
+    header .cart-button {
+        width: 3.25rem;
+        height: 2.625rem;
+    }
+}
+
+/*Tablet*/
+@media (min-width: 48rem) {
+    main section{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    footer .container {
+        flex-direction: row;
+        align-items: center;
+        gap: 2rem;
+        justify-content: space-between;
+    }
+}
+
+/*Desktop*/
+@media (min-width: 64rem) {
+    main {
+        grid-template-columns: minmax(0, 1fr) 330px;
+    }
+    main aside{
+        order: 0;
+        grid-column: 2;
+    }
+    main section{
+        grid-column: 1;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    footer .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
