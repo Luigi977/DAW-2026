@@ -119,7 +119,9 @@ nav ul li {
   flex: 0 0 auto;
 }
 
-nav ul a {
+nav ul button {
+  background-color: transparent;
+  cursor: pointer;
   display: block;
   padding: 0.5rem 1rem;
   border: 1px solid var(--text);
@@ -129,12 +131,12 @@ nav ul a {
   font-size: 0.875rem;
   font-weight: 500;
 }
-nav ul a:not(.active):hover {
+nav ul button:not(.active):hover {
   border-color: var(--primary);
   color: var(--primary);
 }
 
-nav ul a.active {
+nav ul button.active {
   border-color: var(--primary);
   background-color: var(--primary);
   color: var(--background);

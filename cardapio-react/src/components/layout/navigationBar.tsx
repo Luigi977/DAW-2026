@@ -1,13 +1,22 @@
-export function NavigationBar() {
+import type { category } from "../../data/categories";
+
+type NavigationBarProps = {
+  categories: category[];
+  activeCategory: string;
+  onSelectCategory: (alias: string) => void;
+};
+export function NavigationBar({ categories, activeCategory, onSelectCategory }: NavigationBarProps) {
   return (
     <nav>
       <div className="container">
         <ul>
-          <li><a href="#" className="active">Todos</a></li>
-          <li><a href="#">Lanches</a></li>
-          <li><a href="#">Porções</a></li>
-          <li><a href="#">Bebidas</a></li>
-          <li><a href="#">Sobremesas</a></li>
+          {categories.map((category) => (
+            <li>
+              <button className={category.alias == activeCategory ? "active" : ""} type="button" onClick={() => onSelectCategory(category.alias)}>
+                {category.label}
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
