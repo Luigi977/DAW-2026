@@ -12,7 +12,8 @@ export function NavigationBar({ categories, activeCategory, onSelectCategory }: 
         <ul>
           {categories.map((category) => (
             <li>
-              <button className={category.alias == activeCategory ? "active" : ""} type="button" onClick={() => onSelectCategory(category.alias)}>
+              <button className={category.alias == activeCategory ? "active" : ""} type="button" 
+              onClick={() => onSelectCategory(category.alias)}>
                 {category.label}
               </button>
             </li>
