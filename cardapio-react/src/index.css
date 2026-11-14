@@ -267,6 +267,12 @@ section article button {
 * SIDEBAR
 **************/
 
+section .panel-error {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-block: 2rem;
+}
+
 main aside {
   order: -1;
   align-self: start;

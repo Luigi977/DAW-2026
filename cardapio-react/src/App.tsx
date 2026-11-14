@@ -10,7 +10,9 @@ function App() {
 
   const [activeCategory, setActiveCategory] = useState<string>("todos");
 
-  const products = useProducts();
+  const {products, loading, error} = useProducts();
+
+  const visibleProducts = activeCategory === "todos" ? products : products.filter(product => product.category === activeCategory);
 
   function handleSelectCategory(alias: string) {
     setActiveCategory(alias);
@@ -18,7 +20,6 @@ function App() {
 
   return (
     <>
-      <body>
         <Header />
         <NavigationBar
           categories={categories}
@@ -31,12 +32,16 @@ function App() {
             <header>
               <h2>Produtos</h2>
               <div>
-                <p>Categoria <span id="selected-category">{activeCategory}</span>: 10 itens</p>
+                <p>Categoria <span id="selected-category">{activeCategory}</span>: {visibleProducts.length} itens</p>
               </div>
             </header>
 
-            {products.map((product) => (
-              <ProductCard product={product} />
+            {loading && (<p className="loading">Carregando produtos...</p>)}
+
+            {error && <p className="error">{error}</p>}
+
+            {visibleProducts.map((product) => (
+              <ProductCard product={product} key={product.id} />
             ))}
 
             
@@ -54,8 +59,6 @@ function App() {
         </main>
 
         <Footer />
-        <script src="./assets/js/script.js"></script>
-      </body>
     </>
   )
 }

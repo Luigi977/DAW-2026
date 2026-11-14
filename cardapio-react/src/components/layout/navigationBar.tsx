@@ -11,7 +11,7 @@ export function NavigationBar({ categories, activeCategory, onSelectCategory }: 
       <div className="container">
         <ul>
           {categories.map((category) => (
-            <li>
+            <li key={category.alias}>
               <button className={category.alias == activeCategory ? "active" : ""} type="button" 
               onClick={() => onSelectCategory(category.alias)}>
                 {category.label}
